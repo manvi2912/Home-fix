@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block head%}<link rel="stylesheet" href="{% static 'login.css'%}">{%endblock head%}
+{% block body %}
+<div class="box">
+
+  
+    <div class="first">
+    <div class="head"><span style="color: #46a3da">W</span><span style="color: white">elcome </span><span style="color: #46a3da">B</span><span style="color: white">ack! </span><br></div>
+    <div class="head" style="color: white; font-weight:normal; font-size:15px">To keep connected with us please login with your personal info.
+</div>
+</div>
+ <div class="second">
+
+<form action="login" method="POST">
+   {% csrf_token %}
+  <div class="container">
+   <div class="head">Sign in to Home Fix</div>
+   <br> 
+    <br>
+    <div class="wrap">
+    
+    <input type="text" placeholder="Enter Username" name="username" id="username" required>
+    </div>
+    <div class="wrap">
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    </div>
+    <hr>
+
+    <button type="submit" class="loginbtn">Login</button>
+ 
+ 
+    <div class="container register">
+    <p>Don't have an account? <a href="/register">Register</a>.</p>
+    </div>
+ </div>
+
+</form>
+</div>
+</div>
+ {% endblock body %}

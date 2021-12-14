@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block head%}<link rel="stylesheet" href="{% static 'login.css'%}">{%endblock head%}
+{% block body %}
+
+<div class="box">
+    <div class="first" >
+    <div class="head"><span style="color: #46a3da">H</span><span style="color: white">ello </span><span style="color: #46a3da">F</span><span style="color: white">riend! </span><br></div>
+    <div class="head" style="color: white; font-weight:normal; font-size:15px">Enter your personal details and start buying our services.
+</div>
+</div>
+ <div class="second" >
+<form action="register" method="POST">
+  {% csrf_token %}
+  <div class="container">
+   <div class="head">Create an account.</div>
+    <br>
+    <br>
+    <div class="wrap">
+    
+    <input type="text" placeholder="Enter Username" name="username" id="username" required>
+    </div>
+    <div class="xyz">
+      <div class="f1">
+  
+    <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" required ></div>
+    <div class="f2">
+  
+    <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname" ></div>
+    </div>
+    <div class="wrap">
+
+    <input type="email" placeholder="Enter Email id" name="email" id="email" required>
+    </div>
+    <div class="wrap">
+    
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    </div>
+    <div class="wrap">
+    <input type="password" placeholder="Repeat Password" name="psw_repeat" id="psw_repeat" required></div>
+    <hr>
+  
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <a href="/login">Sign in</a>.</p>
+  </div>
+</form>
+</div>
+</div>
+ {% endblock body %}
+

@@ -1,0 +1,118 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block body %}
+<style>
+  button{
+     border:0;
+     background:none;
+  }
+  .bi, .bi-pen-fill:hover{
+       cursor:pointer;
+  }
+</style>
+  <div class=container>
+<h1>Requested Services</h1>
+<form action="" method="POST">
+   {% csrf_token %}
+          <label for="status">Choose Status:</label>
+          <select id="status" name="status">
+                <option value="">All</option>
+                <option value="Done">Done</option>
+                <option value="Pending">Pending</option>
+                <option value="Canceled">Canceled</option>
+          </select>
+          <label for="service">Choose Service:</label>
+          <select id="service" name="service">
+                <option value="">All</option>
+                <option value="Electric service">Electric service</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="AC services">AC services</option>
+                <option value="Carpenter">Carpenter</option>
+          </select>
+          <label for="area">Choose an Area:</label>
+          <select id="area" name="area">
+                <option value="">All</option>
+                <option value="Area1">Area1</option>
+                <option value="Area2">Area2</option>
+                <option value="Area3">Area3</option>
+                <option value="Area4">Area4</option>
+          </select>
+          <label for="date">Choose Date</label>
+          <input type="date" id="date" name="date">
+          <button type="submit" id="submit"><i class="bi bi-check2-circle" style="padding: 5px 6px 0px 6px; font-size: 30px; color:green; font-weight: 1000;"></i></button>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+    <tr>
+      <th></th>
+      <th>Customer Details</th>
+      <th>Requirement</th>
+      <th style="text-align: center">Requested on</th>
+      <th style="text-align: center">Status</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for result in Service_requested%}
+    <tr>
+      <td>
+         <h5 style="color:#23238e;">{{result.service_id.service}} | {{result.service_id.area}} </h5>
+         <p>
+          <strong>Service provider id</strong> {{result.service_id.service_id}}<br>
+          <strong>Service provider</strong>    {{result.service_id.name}}<br>
+          <strong>Contact Details</strong>     {{result.service_id.contact}}<br>
+          <strong>Minimum Charges</strong>     Rs {{result.service_id.min_charges}}<br>
+          <strong>Assigned number of services</strong> {{result.service_id.assigned_no_services}}<br>
+          <strong>Max number of services</strong> {{result.service_id.max_no_services}}
+         </p>
+      </td>
+       <td>
+         <p>
+          <strong>Customer id</strong> {{result.customer_id.id}}<br>
+          <strong>Username</strong> {{result.customer_id.username}}<br>
+          <strong>Email id</strong> {{result.customer_id.email}}<br>
+          <strong>Customer Name</strong>    {{result.customer_name}}<br>
+          <strong>Contact Details</strong>     {{result.customer_contact_no}}<br>
+          <strong>Address</strong>  {{result.address}}<br>
+         </p>
+      </td>
+      <td>
+        {{result.requirement}}
+      </td>
+      <td>
+           <p style="text-align: center">{{result.date}}</p>
+      </td>
+      <td>
+        <span id="s_{{result.id}}">
+        {%if result.status == "Done"%}
+          <strong><span style="color:#1ab41a;" style="text-align: center">{{result.status}}</span></strong>
+        {%else%}
+          {{result.status}}
+        {%endif%}</span>
+        {%if result.status != "Canceled"%}
+        <span id="change_{{result.id}}" style="display:none">
+          <form action="change_status_service" method="POST">
+           {% csrf_token %}
+          <select id="change_status" name="change_status">
+             <option value="Done">Done</option>
+             <option value="Pending">Pending</option>
+          </select>
+          <input type="hidden" name="id" value="{{result.id}}">
+          <button type="submit" id="submit"><i class="bi bi-check2-circle" style="padding: 5px 0px 0px 0px; font-size: 20px; color:green; font-weight: 1000;"></i></button>
+          </form>
+        </span>
+        <i class="bi bi-pen-fill" onclick=change("{{result.id}}")></i>
+        {%endif%}
+      </td>
+      <td>
+         {{result.rated}}
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+    </table>
+</div>
+</div>
+<script src="{% static 'change_status.js'%}"></script>
+{% endblock body %}

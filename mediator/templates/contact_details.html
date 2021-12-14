@@ -1,0 +1,80 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block body %}
+<style>
+  button{
+    border:0;
+    background:none;
+  }
+  .bi, .bi-pen-fill:hover{
+    cursor:pointer;
+  }
+</style>
+  <div class=container>
+<h1>Contact Requests</h1>
+<form action="contacts" method="POST">
+   {% csrf_token %}
+          <label for="status">Choose Status:</label>
+          <select id="status" name="status">
+                <option value="">All</option>
+                <option value="Done">Done</option>
+                <option value="Pending">Pending</option>
+          </select>
+          <label for="date">Choose Date</label>
+          <input type="date" id="date" name="date">
+          <button type="submit" id="submit"><i class="bi bi-check2-circle" style="padding: 5px 6px 0px 6px; font-size: 30px; color:green; font-weight: 1000;"></i></button>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+    <tr>
+      <th>Details</th>
+      <th>Requirement</th>
+      <th style="text-align: center">Requested on</th>
+      <th style="text-align: center">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for result in Contact_Us%}
+    <tr>
+      <td>
+         <p>
+          <strong>Name</strong> {{result.name}}<br>
+          <strong>Contact_no.</strong>    {{result.contact_no}}<br>
+          <strong>Email id</strong>     {{result.email}}<br>
+         </p>
+      </td>
+      <td>
+        {{result.desc}}
+      </td>
+      <td>
+           <p style="text-align: center">{{result.date}}</p>
+      </td>
+      <td style="text-align: center">
+         <span id="s_{{result.id}}">
+        {%if result.status == "Done"%}
+          <strong><span style="color:#1ab41a;" style="text-align: center">{{result.status}} </span></strong>
+          {%else%}
+          {{result.status}}
+          {%endif%} </span>
+          <span id="change_{{result.id}}" style="display:none">
+          <form action="change_status" method="POST">
+           {% csrf_token %}
+          <select id="change_status" name="change_status">
+             <option value="Done">Done</option>
+             <option value="Pending">Pending</option>
+          </select>
+          <input type="hidden" name="id" value="{{result.id}}">
+          <button type="submit" id="submit"><i class="bi bi-check2-circle" style="padding: 5px 0px 0px 0px; font-size: 20px; color:green; font-weight: 1000;"></i></button>
+          </form>
+          </span>
+          <i class="bi bi-pen-fill" onclick=change("{{result.id}}")></i>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+    </table>
+</div>
+</div>
+<script src="{% static 'change_status.js'%}"></script>
+{% endblock body %}

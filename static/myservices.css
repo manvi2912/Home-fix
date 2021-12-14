@@ -1,0 +1,67 @@
+.head{
+    position: relative;
+    top:30px;
+    line-height: 2em;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #070e30f0;
+}
+.rate:before {
+    content: ' \2605';
+    font-size:25px;
+    color: yellow;
+}
+.rate1:before {
+    content: ' \2605';
+    font-size:25px;
+    color: grey;
+}
+.rate_form{
+    text-align:center;
+}
+.rating-wrapper{
+    text-align: center;
+    direction : rtl;
+}
+.rating-wrapper input{
+    display : none;
+}
+.rating-wrapper label{
+    display : inline-block;
+    width : 20px;
+    position : relative;
+    cursor : pointer;
+}
+.rating-wrapper label:before{
+    content: ' \2605';
+    position:absolute;
+    font-size : 20px;
+    display : inline-block;
+    top: -25px;
+    left : 0;
+}
+.rating-wrapper label:after{
+    content: ' \2605';
+    position:absolute;
+    font-size : 20px;
+    display : inline-block;
+    top: -25px;
+    left : 0;
+    color: orange;
+    opacity:0;
+}
+.rating-wrapper label:hover:after,
+.rating-wrapper label:hover ~label:after,
+.rating-wrapper input:checked ~label:after{
+    opacity:1;
+}
+button{
+    border:0;
+    background:none;
+}
+
+textarea{
+    width:89%;
+}

@@ -1,0 +1,154 @@
+body{
+    background-size: cover;
+    background-color:#EFEDED;
+    position: absolute;
+    top: 0px;
+    font-size:14px;
+    font-weight:lighter;
+    right: 0px;
+    bottom:0px;
+    left: 0px;
+}
+input[type=text], input[type=password],input[type=email]{
+   width:75%;
+   height:30px;
+   margin-bottom:5px;
+   color:#6F7373;
+   font-size:12px;
+   border:none;
+   background: #F2F1F1;
+   padding:10px;
+} 
+input[type=text]:focus, input[type=password]:focus,input[type=email]:focus {
+   background-color: #ffffff;
+}
+input[type="submit"]{
+   background-color:#070e30f0;
+   color:white;
+   text-align:center;
+   width:100px;
+   border-radius:15px;
+   border-color:white;
+  
+}
+input[type="submit"]:hover{
+   background-color:#dddddd;
+   color:#070e30f0;
+}
+
+.box {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+     
+} 
+.first{
+   width:25%;
+    background-color:#070e30f0;
+    color:white;
+    font-weight: bold;
+    font-size: 18px; 
+    text-align: center; 
+    padding:50px;
+}
+
+.second{
+   width:25%;
+   padding-left:10px; 
+   background-color:white; 
+   color:#070e30f0; 
+   line-height:30px; 
+   border-color:#ffffff; 
+   border-width:2px;
+}
+hr {
+    border: 1px solid #6E6D6D;
+    margin: auto;
+    margin-bottom: 25px;
+}
+.loginbtn {
+    background-color:#070e30f0;
+    color: white;
+    border-radius:15px;
+    padding: 8px 10px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin: 8px auto;
+    display: block;
+    opacity: 0.9;
+}
+
+.loginbtn:hover {
+   opacity: 1;
+}
+.registerbtn {
+    background-color:#070e30f0;
+    color: white;
+    border-radius:15px;
+    padding: 8px 10px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin: 8px auto;
+    display: block;
+    opacity: 0.9;
+  }
+  
+.registerbtn:hover {
+    opacity: 1;
+  }
+a{
+    color: dodgerblue;
+}
+.head{
+    position: relative;
+    top:30px;
+    line-height: 2em;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    color: #070e30f0;
+}
+.register {
+    background-color: #f1f1f1;
+    font-weight:normal;
+    text-align: center;
+}
+.signin {
+    background-color: #f1f1f1;
+    font-weight:normal;
+    text-align: center;
+  }
+.container .wrap label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+@media only screen and (max-width: 768px) {
+
+   [class="container"] {
+    width: 100%;
+  }
+  [class="container register"] {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  [class="first"] {
+    width: 40%;
+  }
+  [class="second"] {
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 768px) {
+    [class="first"] {
+        width: 75%;
+      }
+      [class="second"] {
+        width: 75%;
+      }
+}

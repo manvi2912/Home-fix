@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block title%}{% endblock title %}
+ {% load static %}
+ {%block head%}<link rel="stylesheet" href="{% static 'service_req.css'%}">{%endblock head%}
+ 
+{% block body %}
+       
+      
+      <div class="container mt-3">
+      <div class="head" style="
+     top:50px;
+     line-height: 2em;
+    font-size: 50px;
+    font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #070e30f0;" >
+   <span style="color: #46a3da">O</span>rder <span style="color: #46a3da">y</span>our <span style="color: #46a3da">s</span>ervices <span style="color: #46a3da">n</span>ow</div>
+     
+     <br>
+       <p>  <img src="{% static 'worker.png'%}" style="height:50px;">
+      <strong>Please select the service provider you want</strong></p>
+      </div>
+       <hr style=" border: 5px solid #070e30f0; border-radius:10px; width:75%">
+        <div class="container mt-3">
+      <form action='details' method="POST">
+      {% csrf_token %}
+    <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+         <thead>
+    <tr>
+       <th> Choose </th>
+       <th>Service id</th>
+       <th>Service_provider name</th>
+       <th>Speciality</th>
+       <th>Min Charges</th>
+       <th>Rating</th>
+       <th>Reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+     {%for result in Service_provider%}
+    <tr>
+      <td><input type="radio" name="service_id" value={{result.service_id}} checked /></input></td>
+      <td>{{result.service_id}}</td>
+      <td>{{result.name}}</td>
+      <td>{{result.speciality}}</td>
+      <td>{{result.min_charges}}</td>
+      <td>{{result.rating}}</td>
+      <td onclick="allReview(this.getAttribute('class'), this.getAttribute('id'))" class="{{result.service_id}}" id="{{forloop.counter}}"><span class="click">Read Reviews</span></td>
+    </tr>
+    <tr id="{{result.service_id}}" style="display:none">
+       <td colspan="7">
+        <table class="table mb-0">
+             {%for review in Reviews%}
+                {%if review.service_id == result%}
+                <tr>
+                <td>
+                   <i class="bi bi-person-circle"></i><strong> {{review.customer_id.first_name}} {{review.customer_id.last_name}} </strong>
+                   {%if review.customer_id == user%}
+                     (You)
+                   {%endif%}
+                   <br>
+                   {%if review.rating == 0%}
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                   {%elif review.rating == 1%}
+                      <span class="rate"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                    {%elif review.rating == 2%}
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                    {%elif review.rating == 3%}
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate1"></span>
+                      <span class="rate1"></span>
+                    {%elif review.rating == 4%}
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate1"></span>
+                    {%else%}
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                      <span class="rate"></span>
+                    {%endif%}
+                   <br>
+                   {{review.review}}
+                   </td>
+                </tr>
+                {%endif%}
+             {%endfor%}
+        </table>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+    </table>
+ </div>
+ </div>
+ <br>
+       
+<div class="container mt-3">
+  <hr style="height: 3px;">
+    <p><img src="{% static 'contract.png'%}" style="height:50px;">
+    <strong> Please enter your details to buy the service.</strong></p>
+  <hr style="height: 3px;">
+</div>
+  <div class="container mt-3" style="line-height:30px;">
+   <div style="background-color:grey; color:white; padding:5px"><strong>Complete payment will be taken after completion of service by service provider, and total payment will depend upon your exact requirement</strong></div>
+    <br>
+    <div>
+    <label for="contact"><b>Contact No.</b></label><br>
+    <input type="text" placeholder="Enter Contact No." name="contact" id="contact" pattern="[0-9]{9}" required>
+    </div>
+    <div>
+    <label for="requirements"><b>Requirements</b></label><br>
+    <textarea placeholder="Enter requirements" name="requirement" id="requirements" rows='2' required></textarea>
+    </div>
+     <div>
+    <label for="address"><b>Address</b></label><br>
+    <textarea placeholder="Enter address" name="address" id="address" rows='2' required></textarea>
+    </div>
+    <input type="submit" value="Submit"></form>
+  </div>
+<script src="{% static 'reviews.js'%}"></script>
+{% endblock body %}

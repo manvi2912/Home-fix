@@ -1,0 +1,38 @@
+{% extends 'base1.html' %}
+{% load static %}
+{%block head%}<link rel="stylesheet" href="{% static 'login.css'%}">{%endblock head%}
+{% block body %}
+</style>
+<div class="box">
+
+  
+    <div class="first">
+    <div class="head"><span style="color: #46a3da">H</span><span style="color: white">ello </span><span style="color: #46a3da">M</span><span style="color: white">ediator! </span><br></div>
+    <div class="head" style="color: white; font-weight:normal; font-size:15px">To move further please login with your official info.
+</div>
+</div>
+ <div class="second">
+
+<form action="medlogin" method="POST">
+   {% csrf_token %}
+  <div class="container">
+   <div class="head">Sign in to Home Fix</div>
+   <br> 
+    <br>
+    <div class="wrap">
+    
+    <input type="text" placeholder="Enter Username" name="username" id="username" required>
+    </div>
+    <div class="wrap">
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    </div>
+    <hr>
+
+    <button type="submit" class="loginbtn">Login</button>
+ 
+ </div>
+
+</form>
+</div>
+</div>
+ {% endblock body %}

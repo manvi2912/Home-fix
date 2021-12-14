@@ -1,0 +1,15 @@
+.nav-item {
+    font-size:105%;
+  }
+.navbar-custom {
+    background-color: #070e30f0;
+}
+body{
+    background-color:#EFEDED;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom:0px;
+    left: 0px;
+} 

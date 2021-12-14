@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block title%}{% endblock title %}
+{% load static %}
+{%block head%}<link rel="stylesheet" href="{% static 'index.css'%}">{%endblock head%}
+{% block body %}
+   
+  <div class="bg" style=" background-image: url({% static 'bg7.jpg'%});
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;" >
+   
+   <div class="head" >
+   <i class="bi bi-tools"></i><br>
+   <span style="color: #46a3da">h</span>ome <span style="color: #46a3da">f</span>ix</div>
+   <div class="head1">A Home Service Providing Website</div>
+   </div>
+    <hr style=" border: 10px solid #01252d;">
+   <div class="head2">
+   Home Services, On demand
+   </div>
+   <hr style=" border: 10px solid #01252d;">
+   <div class=container>
+    <div class="row py-5">
+  <div class="cards">
+    <div class="card mb-3" style="max-width: 540px; margin-left : 60px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'electrician1.jpg'%}" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+     
+      <div class="card-body">
+        <h5 class="card-title">Electric Service</h5>
+        <p class="card-text">Choose your area and hire an electrician for all minor electrical repairs (such as fans, lighting, fuses, electic appliances).</p>
+        <form action="area_service" method="POST">
+          {% csrf_token %}
+          <label for="area_e">Choose an Area:</label>
+                <select id="area_e" name="area">
+                <option value="Area1">Area1</option>
+                <option value="Area2">Area2</option>
+                <option value="Area3">Area3</option>
+                <option value="Area4">Area4</option>
+                </select><br>
+                <input type="hidden" id="service" name="service" value="Electric service">
+          <input type="submit" value="Submit">
+        </form>
+       
+      </div>
+    
+    </div>
+  </div>
+</div>
+<div class="card mb-3" style="max-width: 540px; margin-right : 60px; ">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'plumber.jpg'%}" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Plumbing Service</h5>
+        <p class="card-text">Choose your area and hire a plumber for all types of plumbing problems (such as clogged pipes, leaky taps).</p>
+        <form action="area_service" method="POST">
+          {% csrf_token %}
+          <label for="area_p">Choose an Area:</label>
+                <select id="area_p" name="area">
+                <option value="Area1">Area1</option>
+                <option value="Area2">Area2</option>
+                <option value="Area3">Area3</option>
+                <option value="Area4">Area4</option>
+                </select><br>
+                <input type="hidden" id="service" name="service" value="Plumbing">
+          <input type="submit" value="Submit">
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mb-3" style="max-width: 540px; margin-left : 60px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'ac1.jpg'%}" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">AC Services</h5>
+        <p class="card-text">Choose your area and hire a professional for repairing, installation or servicing AC.</p>
+        <form action="area_service" method="POST">
+          {% csrf_token %}
+          <label for="area_a">Choose an Area:</label>
+                <select id="area_a" name="area">
+                <option value="Area1">Area1</option>
+                <option value="Area2">Area2</option>
+                <option value="Area3">Area3</option>
+                <option value="Area4">Area4</option>
+                </select><br>
+             <input type="hidden" id="service" name="service" value="AC services">
+          <input type="submit" value="Submit">
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3" style="max-width: 540px; margin-right : 60px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'carpenter1.jpg'%}" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Carpentry</h5>
+        <p class="card-text">Choose your area and hire a carpenter for repairing or making wooden furniture.</p>
+        <form action="area_service" method="POST">
+          {% csrf_token %}
+          <label for="area_c">Choose an Area:</label>
+                <select id="area_c" name="area">
+                <option value="Area1">Area1</option>
+                <option value="Area2">Area2</option>
+                <option value="Area3">Area3</option>
+                <option value="Area4">Area4</option>
+                </select><br>
+                <input type="hidden" id="service" name="service" value="Carpenter">
+          <input type="submit" value="Submit">
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+ {% endblock body %}
+

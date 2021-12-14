@@ -1,0 +1,85 @@
+body{
+    background-size: cover;
+    background-color:#EFEDED;
+    position: absolute;
+    top: 0px;
+    font-size:14px;
+    font-weight:lighter;
+    right: 0px;
+    bottom:0px;
+    left: 0px;
+}
+ .head{
+    position: relative;
+    top:30px;
+    line-height: 2em;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #070e30f0;
+}
+textarea, input{
+    width:75%;
+    padding:2px 10px;
+    margin-bottom:5px;
+    background: #E1E6E6;
+    color:#6F7373;
+    font-size:12px;
+    border:none;
+}
+input[type=text]:focus, input[type=email]:focus, textarea:focus {
+    background-color: #ffffff;
+}
+input[type="submit"]{
+   background-color:#070e30f0;
+   color:white;
+   padding:5px 10px;
+   text-align:center;
+   width:100px;
+   border-radius:15px;
+}
+input[type="submit"]:hover{
+   background-color:#dddddd;
+   color:#070e30f0;
+}
+
+.box {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+} 
+
+.first{
+    width:25%;
+    background-color:#070e30f0;
+    color:white;
+    font-weight: bold;
+    font-size: 18px; text-align: center; padding:50px;
+}
+
+.second{
+   width:25%;
+   padding-left:30px;
+   background-color:white; 
+   color:#070e30f0; line-height:30px; 
+   border-color:#ffffff; border-width:2px;
+   padding-bottom:5px;
+}
+
+@media only screen and (max-width: 1000px) {
+  [class="first"] {
+    width: 40%;
+  }
+  [class="second"] {
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  [class="first"] {
+    width: 75%;
+  }
+  [class="second"] {
+    width: 75%;
+  }
+}

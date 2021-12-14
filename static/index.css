@@ -1,0 +1,52 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+   
+}
+  
+.head{
+    position: relative;
+    top:100px;
+    line-height: 1em;
+    font-size: 150px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+}  
+.head1{
+    position: relative;
+    top:100px;
+    line-height: 2em;
+    font-size: 30px;
+    text-align: center;
+    color: #ffffff;
+}
+.head2{
+    position: relative;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #46a3da;
+}
+input[type="submit"]{
+    background-color:#070e30f0;
+    color:white;
+    padding:5px 10px;
+    text-align:center;
+    width:100px;
+    border-radius:15px;
+    border-color:white;
+} 
+input[type="submit"]:hover{
+    background-color:#dddddd;
+    color:#070e30f0;
+}
+
+@media only screen and (max-width: 768px) {
+    [class="head"] {
+        font-size: 100px;
+    }
+}

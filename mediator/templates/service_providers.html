@@ -1,0 +1,90 @@
+{% extends 'base1.html' %}
+{% block body %}
+
+
+<style>
+  button{
+     border:0;
+     background:none;
+  }
+
+  input[type="submit"]{
+    background-color:#212191;
+    color:white;
+    height:40px;
+    border:none;
+    padding:5px 10px 5px 10px;
+    margin-bottom:10px;
+    border-radius:5px;
+ }
+
+ input[type="submit"]:hover{
+    background-color:#1c1c7a;
+ }
+</style>
+  <div class=container>
+<h1>Service Providers</h1>
+<form action="reset" method="POST" onsubmit="return confirm('Are you sure you want to reset?');">
+   {% csrf_token %}
+   <input type="submit" value="RESET Assigned number of services for next day">
+</form>
+<form action="service_providers" method="POST">
+   {% csrf_token %}
+          <label for="area">Choose area:</label>
+          <select id="area" name="area">
+                <option value="">All</option>
+                <option value="Area1">Area1</option>
+                <option value="Area2">Area2</option>
+                <option value="Area3">Area3</option>
+                <option value="Area4">Area4</option>
+          </select>
+          <label for="service">Choose Service:</label>
+          <select id="service" name="service">
+                <option value="">All</option>
+                <option value="Electric service">Electric service</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="AC services">AC services</option>
+                <option value="Carpenter">Carpenter</option>
+          </select>
+          <button type="submit" id="submit"><i class="bi bi-check2-circle" style="padding: 5px 6px 0px 6px; font-size: 30px; color:green; font-weight: 1000;"></i></button>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+    <tr>
+      <th>Service provider details:</th>
+      <th>Rating</th>
+      <th style="text-align: center">Minimum Charges</th>
+      <th>Max no. of services</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for result in Service_provider%}
+    <tr>
+      <td>
+         <h5 style="color:#23238e;">{{result.name}} | {{result.service}} | {{result.area}} </h5>
+         <p>
+          <strong>Service provider id</strong> {{result.service_id}}<br>
+          <strong>Contact Details</strong>     {{result.contact}}<br>
+          <strong>Speciality</strong>     {{result.speciality}}<br>
+          <strong>Assigned number of services</strong> {{result.assigned_no_services}}<br>
+         </p>
+      </td>
+       
+      <td>
+        {{result.rating}}
+      </td>
+      <td>
+           <p style="text-align: center">{{result.min_charges}}</p>
+      </td>
+      
+      <td>
+         {{result.max_no_services}}
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+    </table>
+</div>
+</div>
+{%endblock%}

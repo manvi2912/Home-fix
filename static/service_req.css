@@ -1,0 +1,40 @@
+.click {
+    color:blue;
+  }
+  .click:hover {
+    cursor:pointer;
+  }
+  textarea {
+     width:80%;
+     margin:5px 0;
+     padding:3px;
+     border:none;
+  }
+  input{
+    border:none;
+  }
+  .rate:before {
+    content: ' \2605';
+    font-size: 20px;
+    color:#edc227;
+  }
+  .rate1:before {
+    content: ' \2605';
+    font-size: 20px;
+    color: grey;
+  }
+  input[type="submit"]{
+    background-color:#070e30f0;
+    color:white;
+    padding: 5px 10px;
+    text-align:center;
+    width:100px;
+    border-radius:15px;
+    
+   
+  }
+  input[type="submit"]:hover{
+    background-color:#dddddd;
+    color:#070e30f0;
+  }
+

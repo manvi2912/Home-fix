@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title%}{% endblock title %}
+{% load static %}
+{%block head%}<link rel="stylesheet" href="{% static 'contactus1.css'%}">{%endblock head%}
+{% block body %}
+
+<div class="head">
+   <span style="color: #46a3da">h</span>ave <span style="color: #46a3da">s</span>ome <span style="color: #46a3da">q</span>uestions?</div>
+   </div>
+<h3 style="text-align:center; margin-top:75px; line-height: 1em;">Fill the form.<br>It's easy. </h3><br>
+
+<div class="box">
+
+  
+    <div class="first">
+    <div><br>If you have some questions or want to get in touch with us, use the form below. We look forward to hearing from you.
+</div>
+<div><i class="bi bi-envelope" style="font-size:80px;"></i></div>
+  </div>
+  
+  <div class="second">
+
+    <form action="contactus" method="POST">
+   {% csrf_token %}
+   {%if user.is_authenticated%}
+   <label for="contact"><b>Contact No.</b></label><br>
+    <input type="text" placeholder="Enter your contact No." name="contact" id="contact" pattern="[0-9]{9}" required><br>
+    <label for="requirements"><b>For what you need to contact?</b></label><br>
+    <textarea placeholder="Enter your needs" name="requirement" id="requirements" rows='3' required></textarea><br>
+    <input type="submit" value="Submit">
+   {%else%}
+     <label for="name"><b>Name</b></label><br>
+       <input type="text" placeholder="Enter Your Name" name="name" id="name"required></input><br>
+     <label for="email"><b>Email id</b></label><br>
+       <input type="email" placeholder="Enter Your Email id" name="email" id="email"required></input><br>
+     <label for="contact"><b>Contact No.</b></label><br>
+    <input type="text" placeholder="Enter your Contact No." name="contact" id="contact" pattern="[0-9]{9}" required></input><br>
+    <label for="requirements"><b>For what you need to contact?</b></label><br>
+    <textarea placeholder="Enter your needs" name="requirement" id="requirements" rows='4' required></textarea><br>
+    <input type="submit" value="Submit">
+  
+   {%endif%}
+ </form></div>
+  
+  </div>
+
+{% endblock body %}
